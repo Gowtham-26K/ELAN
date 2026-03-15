@@ -60,6 +60,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   transition: background-color 0.5s ease, color 0.5s ease;
+  width: 100%;
 }
 
 /* Background Decoration */
@@ -67,8 +68,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
@@ -236,21 +237,22 @@ body.light-mode .blob {
 /* Hero Section */
 .hero {
   min-height: 100vh;
-  padding-top: 100px;
+  padding-top: 120px;
+  padding-bottom: 80px;
   position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 
-.badge-premium {
-  display: inline-block;
-  padding: 0.5rem 1.2rem;
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--primary);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.1;
+}
+
+.hero .lead {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 600px;
 }
 
 .hero-content {
@@ -300,14 +302,15 @@ body.light-mode .blob {
 .founders-visual {
   position: relative;
   display: flex;
-  justify-content: flex-end; /* Align the whole group to the right */
-  gap: 1.5rem;
+  justify-content: flex-end;
+  gap: clamp(1rem, 2vw, 1.5rem);
   padding: 1rem;
+  width: 100%;
 }
 
 .founder-card-wrapper {
   position: relative;
-  width: 240px;
+  width: clamp(200px, 25vw, 240px);
   transition: var(--transition);
   animation: float-slow 6s ease-in-out infinite alternate;
 }
@@ -414,14 +417,13 @@ body.light-mode .blob {
   transform: scale(1.05);
 }
 
-/* Section Common */
 .py-section {
-  padding: 100px 0;
+  padding: clamp(60px, 10vw, 120px) 0;
 }
 
 .about-card {
   background: var(--surface);
-  border-radius: 30px;
+  border-radius: clamp(20px, 4vw, 30px);
   border: 1px solid var(--border);
   box-shadow: var(--card-shadow);
 }
@@ -750,37 +752,53 @@ body.light-mode .blob {
     padding-top: 140px;
     padding-bottom: 60px;
   }
+  .hero h1 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero .lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
   .hero-btns { justify-content: center; }
   .founders-visual { 
-    height: 600px; 
     margin-top: 40px; 
-    flex-direction: column;
-  }
-  .founder-card-wrapper { 
-    position: relative; 
-    width: 100%; 
-    max-width: 280px; 
-    margin: 0 auto; 
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    margin-bottom: 2rem;
-  }
-  .founder-card-wrapper.sarathy {
-    margin-bottom: 0;
+    flex-direction: row;
+    justify-content: center;
   }
 }
 
 @media (max-width: 768px) {
-  .display-3 { font-size: 2.8rem; }
   .stats-grid { 
     grid-template-columns: 1fr;
     gap: 1rem;
   }
   .contact-wrapper { border-radius: 20px; }
-  .py-section { padding: 60px 0; }
   .about-card { padding: 2rem !important; }
+}
+
+@media (max-width: 576px) {
+  .hero-btns {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+  .btn-premium-primary, .btn-premium-outline {
+    width: 100%;
+    max-width: 320px;
+  }
+  .founders-visual {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+  .founder-card-wrapper.sarathy {
+    margin-top: 0;
+  }
+  .founder-card-wrapper {
+    width: 280px;
+    max-width: 100%;
+  }
 }
 
 /* Form Custom Utility */
